@@ -58,9 +58,18 @@ flutter:
   uses-material-design: true
 
 
-
-assets:
-  - assets/images/loginlogo.png
+#
+  assets:
+    - assets/images/
+    - assets/images/lock.png
+    - assets/images/register.png
+    - assets/images/perfil.png
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+          weight: 500
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
