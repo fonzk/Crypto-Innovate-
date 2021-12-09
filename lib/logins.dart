@@ -1,13 +1,19 @@
+import 'package:cryptoinnovate/registro.dart';
 import "package:flutter/material.dart";
 
-class Logins extends StatelessWidget {
+class Logins extends StatefulWidget {
   const Logins({Key? key}) : super(key: key);
 
   @override
+  State<Logins> createState() => _LoginsState();
+}
+
+class _LoginsState extends State<Logins> {
+  @override
   Widget build(BuildContext context) {
     var header = Container(
-        margin: const EdgeInsets.only(top: 115, left: 37, right: 37),
         width: MediaQuery.of(context).size.width,
+        margin: const EdgeInsets.only(top: 115, left: 37, right: 37),
         decoration: const BoxDecoration(
           border: Border(
               bottom:
@@ -29,6 +35,7 @@ class Logins extends StatelessWidget {
                     color: Color.fromRGBO(87, 87, 87, 1))),
           ],
         ));
+
     var correoelectronico = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 215, left: 43, right: 43),
@@ -40,6 +47,7 @@ class Logins extends StatelessWidget {
               fontSize: 13,
               color: Color.fromRGBO(231, 84, 37, 1))),
     );
+
     var cajatextomail = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
@@ -65,6 +73,7 @@ class Logins extends StatelessWidget {
               fontSize: 13,
               color: Color.fromRGBO(464, 84, 37, 1))),
     );
+
     var cajatextcontras = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
@@ -91,9 +100,11 @@ class Logins extends StatelessWidget {
               fontSize: 13,
               color: Color.fromRGBO(231, 84, 37, 1))),
     );
+
     var mailbx = Column(
       children: [correoelectronico, cajatextomail],
     );
+
     var passbx = Column(
       children: [contratext, cajatextcontras],
     );
@@ -118,15 +129,28 @@ class Logins extends StatelessWidget {
         ));
 
     var registra = Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width * 0.7,
       margin: const EdgeInsets.only(top: 56),
-      child: Text("¿No tienes una cuenta? Regístrate ",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              fontFamily: "Poppins",
-              fontWeight: FontWeight.w400,
-              fontSize: 13,
-              color: Color.fromRGBO(131, 48, 21, 1))),
+      child: ElevatedButton(
+        child: Text("¿No tienes una cuenta? Regístrate ",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: Color.fromRGBO(131, 48, 21, 1))),
+        onPressed: () {
+          // direcciónamiento a Resgistro
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Registro()));
+        },
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+          shadowColor:
+              MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+        ),
+      ),
     );
 
     var col = Container(
@@ -135,6 +159,11 @@ class Logins extends StatelessWidget {
         child: Column(
           children: [header, mailbx, passbx, forgetpass, accederbtn, registra],
         ));
-    return col;
+
+    return Scaffold(
+      body: Center(
+        child: col,
+      ),
+    );
   }
 }
