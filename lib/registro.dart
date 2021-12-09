@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/logins.dart';
 import "package:flutter/material.dart";
 
 class Registro extends StatelessWidget {
@@ -137,20 +138,35 @@ class Registro extends StatelessWidget {
     var registra = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 56),
-      child: Text("Iniciar Sesión",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              fontFamily: "Poppins",
-              fontWeight: FontWeight.w400,
-              fontSize: 13,
-              color: Color.fromRGBO(131, 48, 21, 1))),
+      child: ElevatedButton(
+          child: Text("Iniciar Sesión",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13,
+                  color: Color.fromRGBO(131, 48, 21, 1))),
+          onPressed: () {
+            print(Navigator);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Logins()));
+          },
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+            shadowColor:
+                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+          )),
     );
+
     var col = Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [header, namebx, mailbx, passbx, confirmarbtn, registra],
         ));
-    return col;
+    return Scaffold(
+      body: col,
+    );
   }
 }

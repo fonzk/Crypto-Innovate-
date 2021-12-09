@@ -3,6 +3,9 @@ import 'logins.dart';
 import 'registro.dart';
 import 'pass.dart';
 import 'updatedata.dart';
+import 'regestados.dart';
+import 'regpublicaciones.dart';
+import 'feedestados.dart';
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: UpdateData(),
+      body: Logins(),
     );
   }
 }
