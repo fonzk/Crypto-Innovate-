@@ -27,8 +27,6 @@ class _FeedEstados extends State<FeedEstados> {
 
     var publicarbtn = Container(
         width: 88,
-        height: 23,
-        margin: const EdgeInsets.only(top: 9, right: 13),
         decoration: BoxDecoration(
           color: Color.fromRGBO(255, 102, 92, 1),
           borderRadius: new BorderRadius.circular(10.0),
@@ -46,23 +44,23 @@ class _FeedEstados extends State<FeedEstados> {
     ;
 
     var headerrestados = Container(
-      margin: const EdgeInsets.only(top: 2),
       width: MediaQuery.of(context).size.width,
-      height: 44,
       decoration: const BoxDecoration(
         border: Border(
             bottom:
                 BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [imagerow, publicarbtn],
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [imagerow, publicarbtn],
+        ),
       ),
     );
 
     var imagenestado = Container(
         width: 41,
-        height: 41,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
