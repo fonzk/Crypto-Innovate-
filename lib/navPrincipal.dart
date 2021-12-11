@@ -22,6 +22,36 @@ class _NavPrincipalState extends State<NavPrincipal> {
       child: Image.asset('assets/images/home.png'),
     );
 
+    var btnPublicButton = new ElevatedButton(
+      onPressed: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+      style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+          shadowColor: MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0))),
+      child: Image.asset('assets/images/image.png'),
+    );
+
+    var btnNewsButton = new ElevatedButton(
+      onPressed: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+      style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+          shadowColor: MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0))),
+      child: Image.asset('assets/images/Nuevos.png'),
+    );
+
+    var btnConfingButton = new ElevatedButton(
+      onPressed: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+      style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+          shadowColor: MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0))),
+      child: Image.asset('assets/images/Confings.png'),
+    );
+
     return Container(
       child: Padding(
           padding: EdgeInsets.all(10.0),
@@ -32,9 +62,9 @@ class _NavPrincipalState extends State<NavPrincipal> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   btnHomeButton,
-                  btnHomeButton,
-                  btnHomeButton,
-                  btnHomeButton,
+                  btnPublicButton,
+                  btnNewsButton,
+                  btnConfingButton,
                 ],
               )
             ],

@@ -2,6 +2,7 @@
 */
 
 import 'package:cryptoinnovate/navPrincipal.dart';
+import 'package:cryptoinnovate/regestados.dart';
 import "package:flutter/material.dart";
 
 class FeedEstados extends StatefulWidget {
@@ -17,101 +18,151 @@ class _FeedEstados extends State<FeedEstados> {
   Widget build(BuildContext context) {
     var imagerow = Container(
         margin: const EdgeInsets.only(left: 9),
-        width: 32,
-        height: 31,
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage("assets/images/perfil.png"))));
+                image: AssetImage("assets/images/user.jpg"))));
 
     var publicarbtn = Container(
         width: 88,
-        height: 23,
-        margin: const EdgeInsets.only(top: 9, right: 13),
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 102, 92, 1),
-          borderRadius: new BorderRadius.circular(10.0),
-        ),
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
-          child: Text("Publicar",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                  color: Color.fromRGBO(255, 255, 255, 1))),
+          child: ElevatedButton(
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RegistroEstados())),
+              child: Image.asset('assets/images/comment.png'),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+                  shadowColor:
+                      MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
-    ;
 
     var headerrestados = Container(
-      margin: const EdgeInsets.only(top: 2),
       width: MediaQuery.of(context).size.width,
-      height: 44,
       decoration: const BoxDecoration(
         border: Border(
             bottom:
                 BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [imagerow, publicarbtn],
-      ),
-    );
-
-    var imagenestado = Container(
-        width: 41,
-        height: 41,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/perfil.png"))));
-
-    var rowimage = Row(
-      children: [
-        imagenestado,
-        Container(
-          margin: const EdgeInsets.only(left: 30),
-          child: Text(
-            "¿Qué estás pensando?",
-            style: TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w400,
-                fontSize: 13,
-                color: Color.fromRGBO(51, 51, 51, 1)),
-          ),
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [imagerow, publicarbtn],
         ),
-      ],
-    );
-
-    var controwima = Container(
-      width: MediaQuery.of(context).size.width,
-      height: 50,
-      margin: const EdgeInsets.only(top: 26, left: 25),
-      child: rowimage,
-    );
-
-    var homelogo = NavPrincipal();
-
-    var textf = Container(
-      decoration: BoxDecoration(
-        border: Border(
-            bottom:
-                BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 2)),
       ),
-      margin: const EdgeInsets.only(top: 15, left: 85, right: 35),
-      child: TextField(
-        maxLines: 3,
-        decoration: InputDecoration.collapsed(hintText: "Enter your text here"),
+    );
+
+    var rowSloganView = Container(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Estados",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w400,
+                    fontSize: 25,
+                    color: Color.fromRGBO(51, 51, 51, 1))),
+            ElevatedButton(
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RegistroEstados())),
+                child: Text("Nuevo estado +",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: Color.fromRGBO(255, 102, 92, 1))),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+                    shadowColor:
+                        MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0))))
+          ],
+        ),
+      ),
+    );
+
+    var state = Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(color: Color.fromRGBO(196, 196, 196, 0.15)),
+        margin: EdgeInsets.only(bottom: 10, top: 10),
+        child: Padding(
+          padding: EdgeInsets.only(left: 20, right: 20, bottom: 4, top: 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/user.jpg"))),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                decoration: const BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(
+                          color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      child: Text(
+                        "Manuel Garcia",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20,
+                            color: Color.fromRGBO(51, 51, 51, 1)),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(0.0),
+                        child: Text(
+                            '"Nunca es tarde para ser lo que deberías haber sido"',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14,
+                                color: Color.fromRGBO(51, 51, 51, 1))),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
+
+    var contenStates = Container(
+      child: Column(
+        children: [
+          state,
+          state,
+          state,
+          state,
+        ],
       ),
     );
 
     var contentPage = Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: [headerrestados, controwima, textf],
+        children: [headerrestados, rowSloganView, contenStates],
       ),
     );
 
@@ -120,7 +171,7 @@ class _FeedEstados extends State<FeedEstados> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, homelogo],
+          children: [contentPage, NavPrincipal()],
         ));
 
     return Scaffold(

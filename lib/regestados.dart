@@ -1,3 +1,5 @@
+import 'package:cryptoinnovate/feedestados.dart';
+import 'package:cryptoinnovate/navSecundaria.dart';
 import "package:flutter/material.dart";
 
 class RegistroEstados extends StatefulWidget {
@@ -13,13 +15,13 @@ class _RegistroEstados extends State<RegistroEstados> {
   Widget build(BuildContext context) {
     var imagerow = Container(
         margin: const EdgeInsets.only(left: 9),
-        width: 32,
-        height: 31,
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
                 fit: BoxFit.fill,
-                image: AssetImage("assets/images/perfil.png"))));
+                image: AssetImage("assets/images/user.jpg"))));
 
     var publicarbtn = Container(
         width: 88,
@@ -31,28 +33,36 @@ class _RegistroEstados extends State<RegistroEstados> {
         ),
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
-          child: Text("Publicar",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                  color: Color.fromRGBO(255, 255, 255, 1))),
+          child: ElevatedButton(
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FeedEstados())),
+              child: Text("Publicar",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      color: Color.fromRGBO(255, 255, 255, 1))),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+                  shadowColor:
+                      MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
-    ;
 
     var headerrestados = Container(
-      margin: const EdgeInsets.only(top: 2),
       width: MediaQuery.of(context).size.width,
-      height: 44,
       decoration: const BoxDecoration(
         border: Border(
             bottom:
                 BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [imagerow, publicarbtn],
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [imagerow, publicarbtn],
+        ),
       ),
     );
 
@@ -60,10 +70,11 @@ class _RegistroEstados extends State<RegistroEstados> {
         width: 41,
         height: 41,
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/perfil.png"))));
+          shape: BoxShape.circle,
+          image: DecorationImage(
+              fit: BoxFit.fill, image: AssetImage("assets/images/user.jpg")),
+        ));
+
     var rowimage = Row(
       children: [
         imagenestado,
@@ -80,12 +91,14 @@ class _RegistroEstados extends State<RegistroEstados> {
         ),
       ],
     );
+
     var controwima = Container(
       width: MediaQuery.of(context).size.width,
       height: 50,
       margin: const EdgeInsets.only(top: 26, left: 25),
       child: rowimage,
     );
+
     var homelogo = Container(
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width,
@@ -100,6 +113,7 @@ class _RegistroEstados extends State<RegistroEstados> {
         height: 20,
       ),
     );
+
     var textf = Container(
       decoration: BoxDecoration(
         border: Border(
@@ -112,12 +126,26 @@ class _RegistroEstados extends State<RegistroEstados> {
         decoration: InputDecoration.collapsed(hintText: "Enter your text here"),
       ),
     );
+
+    var contentPage = Container(
+      child: Column(
+        children: [
+          headerrestados,
+          controwima,
+          textf,
+        ],
+      ),
+    );
+
     var col = Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         child: Column(
-          children: [headerrestados, controwima, textf, homelogo],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [contentPage, NavSecundaria()],
         ));
-    return col;
+
+    return Scaffold(
+      body: col,
+    );
   }
 }

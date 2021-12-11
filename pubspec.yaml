@@ -63,10 +63,17 @@ flutter:
     - assets/images/
     - assets/images/lock.png
     - assets/images/register.png
+    - assets/images/home.png
+    - assets/images/comment.png
     - assets/images/perfil.png
     - assets/images/image.png
+    - assets/images/Confings.png
+    - assets/images/Nuevos.png
+    - assets/images/Send.png
     - assets/images/location.png
     - assets/images/gif.png
+    - assets/images/user.jpg
+
   fonts:
     - family: Poppins
       fonts:
