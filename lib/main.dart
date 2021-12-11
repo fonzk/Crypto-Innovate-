@@ -6,6 +6,7 @@ import 'updatedata.dart';
 import 'regestados.dart';
 import 'regpublicaciones.dart';
 import 'feedestados.dart';
+import 'ui/pages/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,9 +26,9 @@ class _MyAppState extends State<MyApp> {
       title: 'Crypto Innovate',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Crypto Innovate'),
     );
   }
 }
@@ -54,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Logins(),
+      body: HomeScreen(),
+      // body: Logins(),
     );
   }
 }
