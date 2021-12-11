@@ -1,6 +1,7 @@
 /*falta por completar
 */
 
+import 'package:cryptoinnovate/navPrincipal.dart';
 import "package:flutter/material.dart";
 
 class FeedEstados extends StatefulWidget {
@@ -26,8 +27,6 @@ class _FeedEstados extends State<FeedEstados> {
 
     var publicarbtn = Container(
         width: 88,
-        height: 23,
-        margin: const EdgeInsets.only(top: 9, right: 13),
         decoration: BoxDecoration(
           color: Color.fromRGBO(255, 102, 92, 1),
           borderRadius: new BorderRadius.circular(10.0),
@@ -45,28 +44,29 @@ class _FeedEstados extends State<FeedEstados> {
     ;
 
     var headerrestados = Container(
-      margin: const EdgeInsets.only(top: 2),
       width: MediaQuery.of(context).size.width,
-      height: 44,
       decoration: const BoxDecoration(
         border: Border(
             bottom:
                 BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [imagerow, publicarbtn],
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [imagerow, publicarbtn],
+        ),
       ),
     );
 
     var imagenestado = Container(
         width: 41,
-        height: 41,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
                 fit: BoxFit.fill,
                 image: AssetImage("assets/images/perfil.png"))));
+
     var rowimage = Row(
       children: [
         imagenestado,
@@ -83,26 +83,16 @@ class _FeedEstados extends State<FeedEstados> {
         ),
       ],
     );
+
     var controwima = Container(
       width: MediaQuery.of(context).size.width,
       height: 50,
       margin: const EdgeInsets.only(top: 26, left: 25),
       child: rowimage,
     );
-    var homelogo = Container(
-      alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width,
-      height: 40,
-      margin: const EdgeInsets.only(top: 603, bottom: 5),
-      decoration: const BoxDecoration(
-        border: Border(top: BorderSide(color: Colors.black, width: 1)),
-      ),
-      child: Image.asset(
-        "assets/images/home.png",
-        width: 20,
-        height: 20,
-      ),
-    );
+
+    var homelogo = NavPrincipal();
+
     var textf = Container(
       decoration: BoxDecoration(
         border: Border(
@@ -115,12 +105,24 @@ class _FeedEstados extends State<FeedEstados> {
         decoration: InputDecoration.collapsed(hintText: "Enter your text here"),
       ),
     );
+
+    var contentPage = Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [headerrestados, controwima, textf],
+      ),
+    );
+
     var col = Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
-          children: [headerrestados, controwima, textf, homelogo],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [contentPage, homelogo],
         ));
-    return col;
+
+    return Scaffold(
+      body: col,
+    );
   }
 }
