@@ -1,6 +1,8 @@
 import 'package:cryptoinnovate/registro.dart';
 import "package:flutter/material.dart";
 
+import 'feedestados.dart';
+
 class Logins extends StatefulWidget {
   const Logins({Key? key}) : super(key: key);
 
@@ -110,23 +112,34 @@ class _LoginsState extends State<Logins> {
     );
 
     var accederbtn = Container(
-        width: MediaQuery.of(context).size.width,
-        height: 50,
-        margin: const EdgeInsets.only(top: 39, left: 43, right: 43),
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 102, 92, 1),
-          borderRadius: new BorderRadius.circular(10.0),
-        ),
-        child: Padding(
+      width: MediaQuery.of(context).size.width,
+      height: 50,
+      margin: const EdgeInsets.only(top: 39, left: 43, right: 43),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(255, 102, 92, 1),
+        borderRadius: new BorderRadius.circular(10.0),
+      ),
+      child: Padding(
           padding: EdgeInsets.only(left: 67, right: 67, top: 8),
-          child: Text("Acceder",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 19,
-                  color: Color.fromRGBO(255, 255, 255, 1))),
-        ));
+          child: ElevatedButton(
+              child: Text("Acceder",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 19,
+                      color: Color.fromRGBO(255, 255, 255, 1))),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FeedEstados()));
+              },
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+                shadowColor:
+                    MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+              ))),
+    );
 
     var registra = Container(
       width: MediaQuery.of(context).size.width * 0.7,
