@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/feedpublicaciones.dart';
 import 'package:cryptoinnovate/navSecundaria.dart';
 import "package:flutter/material.dart";
 
@@ -32,15 +33,22 @@ class _RegistroPublicaciones extends State<RegistroPublicaciones> {
         ),
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
-          child: Text("Publicar",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                  color: Color.fromRGBO(255, 255, 255, 1))),
+          child: ElevatedButton(
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FeedPublicaciones())),
+              child: Text("Publicar",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      color: Color.fromRGBO(255, 255, 255, 1))),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+                  shadowColor:
+                      MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
-    ;
 
     var headerrestados = Container(
       margin: const EdgeInsets.only(top: 2),
