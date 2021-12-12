@@ -7,6 +7,7 @@ import 'regestados.dart';
 import 'regpublicaciones.dart';
 import 'feedestados.dart';
 import 'ui/pages/home_screen.dart';
+import 'ui/themes/paletter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Crypto Innovate',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Palette.whiteToDark,
       ),
       home: const MyHomePage(title: 'Crypto Innovate'),
     );
@@ -46,8 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomeScreen(),
-      // body: Logins(),
+      // body: HomeScreen(),
+      body: Logins(),
     );
   }
 }

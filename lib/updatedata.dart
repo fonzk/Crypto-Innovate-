@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import 'navSecundaria.dart';
+
 class UpdateData extends StatefulWidget {
   const UpdateData({Key? key}) : super(key: key);
 
@@ -156,34 +158,28 @@ class _UpdateDataState extends State<UpdateData> {
         },
       ),
     );
-    var homelogo = Container(
-      width: MediaQuery.of(context).size.width,
-      height: 30,
-      margin: const EdgeInsets.only(top: 50, bottom: 5),
-      decoration: const BoxDecoration(
-        border: Border(top: BorderSide(color: Colors.black, width: 1)),
-      ),
-      child: Image.asset(
-        "assets/images/home.png",
-        width: 20,
-        height: 20,
+
+    var contentPage = Container(
+      child: Column(
+        children: [
+          imageheader,
+          header,
+          namebx,
+          mailbx,
+          passbx,
+          sw,
+          actualizarBtn,
+        ],
       ),
     );
+
     var col = Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
-          children: [
-            imageheader,
-            header,
-            namebx,
-            mailbx,
-            passbx,
-            sw,
-            actualizarBtn,
-            homelogo
-          ],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [contentPage, NavSecundaria()],
         ));
-    return col;
+    return Scaffold(body: col);
   }
 }
