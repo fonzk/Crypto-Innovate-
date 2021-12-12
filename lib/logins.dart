@@ -174,7 +174,7 @@ class _LoginsState extends State<Logins> {
         ));
 
     return Scaffold(
-      body: Center(
+      body: Container(
         child: col,
       ),
     );

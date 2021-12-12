@@ -1,4 +1,7 @@
 import 'package:cryptoinnovate/feedestados.dart';
+import 'package:cryptoinnovate/feedpublicaciones.dart';
+import 'package:cryptoinnovate/regpublicaciones.dart';
+import 'package:cryptoinnovate/updatedata.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(NavPrincipal());
@@ -23,8 +26,8 @@ class _NavPrincipalState extends State<NavPrincipal> {
     );
 
     var btnPublicButton = new ElevatedButton(
-      onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => FeedPublicaciones())),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
@@ -33,8 +36,8 @@ class _NavPrincipalState extends State<NavPrincipal> {
     );
 
     var btnNewsButton = new ElevatedButton(
-      onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+      onPressed: () => Navigator.push(context,
+          MaterialPageRoute(builder: (context) => RegistroPublicaciones())),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
@@ -44,7 +47,7 @@ class _NavPrincipalState extends State<NavPrincipal> {
 
     var btnConfingButton = new ElevatedButton(
       onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+          context, MaterialPageRoute(builder: (context) => UpdateData())),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
