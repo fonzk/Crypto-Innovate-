@@ -128,7 +128,7 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                             textAlign: TextAlign.left,
                             style: TextStyle(
                                 fontFamily: "Poppins",
-                                fontWeight: FontWeight.w400,
+                                fontWeight: FontWeight.w700,
                                 fontSize: 12,
                                 color: Color.fromRGBO(51, 51, 51, 1)),
                           ),
