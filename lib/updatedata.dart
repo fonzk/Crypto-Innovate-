@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/ui/widgets/change__theme_buttib_widget.dart';
 import "package:flutter/material.dart";
 
 import 'navSecundaria.dart';
@@ -149,14 +150,7 @@ class _UpdateDataState extends State<UpdateData> {
         ));
     var sw = Container(
       margin: const EdgeInsets.only(top: 35),
-      child: Switch(
-        value: state,
-        onChanged: (bool s) {
-          setState(() {
-            state = s;
-          });
-        },
-      ),
+      child: ChangeThemeButtonWidget(),
     );
 
     var contentPage = Container(

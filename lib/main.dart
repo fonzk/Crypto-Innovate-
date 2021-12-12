@@ -1,16 +1,11 @@
+import 'package:cryptoinnovate/ui/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'logins.dart';
-import 'registro.dart';
-import 'pass.dart';
-import 'updatedata.dart';
-import 'regestados.dart';
-import 'regpublicaciones.dart';
-import 'feedestados.dart';
-import 'ui/pages/home_screen.dart';
-import 'ui/themes/paletter.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (_) => ThemeProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -23,12 +18,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       title: 'Crypto Innovate',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Palette.whiteToDark,
-      ),
+      themeMode: themeProvider.themeMode,
+      theme: Mythemes.lightTheme,
+      darkTheme: Mythemes.darkTheme,
       home: const MyHomePage(title: 'Crypto Innovate'),
     );
   }
