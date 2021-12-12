@@ -3,6 +3,7 @@
 
 import 'package:cryptoinnovate/navPrincipal.dart';
 import 'package:cryptoinnovate/regestados.dart';
+import 'package:cryptoinnovate/regpublicaciones.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import "package:flutter/material.dart";
 
@@ -72,8 +73,10 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                     fontSize: 25,
                     color: Color.fromRGBO(51, 51, 51, 1))),
             ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegistroEstados())),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegistroPublicaciones())),
                 child: Text("Nuevo Publicación +",
                     textAlign: TextAlign.center,
                     style: TextStyle(
