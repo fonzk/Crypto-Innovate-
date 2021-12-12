@@ -7,18 +7,7 @@ class RecentChats extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-        ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
           child: ListView.builder(
             itemCount: chats.length,
             itemBuilder: (BuildContext context, int index) {
@@ -37,7 +26,7 @@ class RecentChats extends StatelessWidget {
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: chat.unread ? Color(0xFFFFEFEE) : Colors.white,
+                    color: chat.unread ? Color(0xFFff665c) : Colors.white,
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(20.0),
                       bottomRight: Radius.circular(20.0),
@@ -59,7 +48,9 @@ class RecentChats extends StatelessWidget {
                               Text(
                                 chat.sender.name,
                                 style: TextStyle(
-                                  color: Colors.grey,
+                                  color: chat.unread
+                                      ? Colors.white
+                                      : Color.fromRGBO(255, 102, 92, 1),
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -70,7 +61,9 @@ class RecentChats extends StatelessWidget {
                                 child: Text(
                                   chat.text,
                                   style: TextStyle(
-                                    color: Colors.blueGrey,
+                                    color: chat.unread
+                                        ? Color(0xfffce9e7)
+                                        : Colors.blueGrey,
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -104,7 +97,7 @@ class RecentChats extends StatelessWidget {
                                   child: Text(
                                     'NEW',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Color(0xffe28743),
                                       fontSize: 12.0,
                                       fontWeight: FontWeight.bold,
                                     ),

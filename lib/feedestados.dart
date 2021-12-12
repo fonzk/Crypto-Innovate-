@@ -3,6 +3,7 @@
 
 import 'package:cryptoinnovate/navPrincipal.dart';
 import 'package:cryptoinnovate/regestados.dart';
+import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import "package:flutter/material.dart";
 
 class FeedEstados extends StatefulWidget {
@@ -32,7 +33,7 @@ class _FeedEstados extends State<FeedEstados> {
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
               onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RegistroEstados())),
+                  MaterialPageRoute(builder: (context) => HomeScreen())),
               child: Image.asset('assets/images/comment.png'),
               style: ButtonStyle(
                   backgroundColor:
