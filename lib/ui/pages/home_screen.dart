@@ -1,6 +1,6 @@
-import 'package:cryptoinnovate/navSecundaria.dart';
 import 'package:cryptoinnovate/ui/widgets/category_selector.dart';
 import 'package:cryptoinnovate/ui/widgets/favorite_contacts.dart';
+import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import 'package:cryptoinnovate/ui/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 

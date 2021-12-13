@@ -1,8 +1,24 @@
-import 'package:cryptoinnovate/ui/themes/theme_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 
-class ChangeThemeButtonWidget extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class ChangeThemeButtonWidget extends Container {
+  final BuildContext context;
+  final ThemeController controller;
+  ChangeThemeButtonWidget({
+    Key? key,
+    required this.controller,
+    required this.context,
+  }) : super(
+          key: key,
+          child: Switch.adaptive(
+            value: controller.darkMode,
+            onChanged: (value) => controller.darkMode = !controller.darkMode,
+          ),
+        );
+}
+
+/*OLD VERSION
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -14,4 +30,4 @@ class ChangeThemeButtonWidget extends StatelessWidget {
           provider.toggleTheme(value);
         });
   }
-}
+}*/

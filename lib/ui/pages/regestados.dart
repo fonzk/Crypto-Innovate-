@@ -1,5 +1,5 @@
-import 'package:cryptoinnovate/feedestados.dart';
-import 'package:cryptoinnovate/navSecundaria.dart';
+import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
 
 class RegistroEstados extends StatefulWidget {

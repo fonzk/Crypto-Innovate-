@@ -1,7 +1,6 @@
-import 'package:cryptoinnovate/registro.dart';
+import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/pages/registro.dart';
 import "package:flutter/material.dart";
-
-import 'feedestados.dart';
 
 class Logins extends StatefulWidget {
   const Logins({Key? key}) : super(key: key);
@@ -172,11 +171,11 @@ class _LoginsState extends State<Logins> {
         child: Column(
           children: [header, mailbx, passbx, forgetpass, accederbtn, registra],
         ));
-
-    return Scaffold(
-      body: Container(
-        child: col,
-      ),
-    );
+    return col;
+    // return Scaffold(
+    //   body: Container(
+    //     child: col,
+    //   ),
+    // );
   }
 }

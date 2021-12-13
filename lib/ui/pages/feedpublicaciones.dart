@@ -1,19 +1,16 @@
-/*falta por completar
-*/
-
-import 'package:cryptoinnovate/navPrincipal.dart';
-import 'package:cryptoinnovate/regestados.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
+import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
+import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
 
-class FeedEstados extends StatefulWidget {
-  const FeedEstados({Key? key}) : super(key: key);
+class FeedPublicaciones extends StatefulWidget {
+  const FeedPublicaciones({Key? key}) : super(key: key);
 
   @override
-  State<FeedEstados> createState() => _FeedEstados();
+  State<FeedPublicaciones> createState() => _FeedPublicaciones();
 }
 
-class _FeedEstados extends State<FeedEstados> {
+class _FeedPublicaciones extends State<FeedPublicaciones> {
   bool state = false;
   @override
   Widget build(BuildContext context) {
@@ -64,7 +61,7 @@ class _FeedEstados extends State<FeedEstados> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Estados",
+            Text("Publicaciones",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     fontFamily: "Poppins",
@@ -72,9 +69,11 @@ class _FeedEstados extends State<FeedEstados> {
                     fontSize: 25,
                     color: Color.fromRGBO(51, 51, 51, 1))),
             ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegistroEstados())),
-                child: Text("Nuevo estado +",
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegistroPublicaciones())),
+                child: Text("Nuevo Publicación +",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontFamily: "Poppins",
@@ -98,53 +97,69 @@ class _FeedEstados extends State<FeedEstados> {
         child: Padding(
           padding: EdgeInsets.only(left: 20, right: 20, bottom: 4, top: 4),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: 50,
-                height: 50,
+                  child: Container(
+                width: 32,
+                height: 32,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage("assets/images/user.jpg"))),
-              ),
+              )),
               Container(
-                width: MediaQuery.of(context).size.width * 0.7,
-                decoration: const BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(
-                          color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        "Manuel Garcia",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            color: Color.fromRGBO(51, 51, 51, 1)),
-                      ),
-                    ),
-                    Container(
-                      child: Padding(
-                        padding: EdgeInsets.all(0.0),
-                        child: Text(
-                            '"Nunca es tarde para ser lo que deberías haber sido"',
-                            textAlign: TextAlign.justify,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  margin: const EdgeInsets.only(bottom: 15),
+                  decoration: const BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(
+                            color: Color.fromRGBO(255, 102, 92, 1), width: 1)),
+                  ),
+                  child: Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Manuel Garcia",
+                            textAlign: TextAlign.left,
                             style: TextStyle(
                                 fontFamily: "Poppins",
-                                fontWeight: FontWeight.normal,
-                                fontSize: 14,
-                                color: Color.fromRGBO(51, 51, 51, 1))),
-                      ),
+                                fontWeight: FontWeight.w700,
+                                fontSize: 12,
+                                color: Color.fromRGBO(51, 51, 51, 1)),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: MediaQuery.of(context).size.width * 0.12),
+                            child: Text('Posicionamiento digital',
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 10,
+                                    color: Color.fromRGBO(51, 51, 51, 1))),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 7),
+                          width: 238,
+                          height: 109,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image:
+                                      AssetImage("assets/images/pubimg.png"))),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-              )
+                  ))
             ],
           ),
         ));
@@ -152,7 +167,6 @@ class _FeedEstados extends State<FeedEstados> {
     var contenStates = Container(
       child: Column(
         children: [
-          state,
           state,
           state,
           state,

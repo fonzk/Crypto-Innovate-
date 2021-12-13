@@ -1,13 +1,34 @@
-import 'package:cryptoinnovate/logins.dart';
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
+import 'package:cryptoinnovate/ui/widgets/change__theme_buttib_widget.dart';
+import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 
-class Registro extends StatelessWidget {
-  const Registro({Key? key}) : super(key: key);
+class UpdateData extends StatefulWidget {
+  const UpdateData({Key? key}) : super(key: key);
 
   @override
+  _UpdateDataState createState() => _UpdateDataState();
+}
+
+class _UpdateDataState extends State<UpdateData> {
+  @override
   Widget build(BuildContext context) {
+    var imageheader = Container(
+        margin: const EdgeInsets.only(top: 40),
+        width: 173,
+        height: 168,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage("assets/images/perfil.png"),
+          ),
+        ));
+
     var header = Container(
-        margin: const EdgeInsets.only(top: 115, left: 37, right: 37),
+        margin: const EdgeInsets.only(top: 23, left: 37, right: 37),
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           border: Border(
@@ -16,18 +37,13 @@ class Registro extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Image.asset(
-              "assets/images/register.png",
-              width: 34,
-            ),
-            const SizedBox(width: 8),
-            const Text("Registro",
-                textAlign: TextAlign.left,
+            const Text("Actualizar Datos",
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 35,
-                    color: Color.fromRGBO(87, 87, 87, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 35,
+                )),
           ],
         ));
     var correoelectronico = Container(
@@ -83,7 +99,7 @@ class Registro extends StatelessWidget {
 
     var nombreText = Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(top: 163, left: 43, right: 43),
+      margin: const EdgeInsets.only(top: 45, left: 43, right: 43),
       child: Text("Nombre Completo",
           textAlign: TextAlign.left,
           style: TextStyle(
@@ -96,10 +112,10 @@ class Registro extends StatelessWidget {
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
           color: Color.fromRGBO(196, 196, 196, 0.15),
-          borderRadius: new BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
                 decoration: InputDecoration(
               border: InputBorder.none,
@@ -116,17 +132,17 @@ class Registro extends StatelessWidget {
       children: [contratext, cajatextcontras],
     );
 
-    var confirmarbtn = Container(
+    var actualizarBtn = Container(
         width: MediaQuery.of(context).size.width,
         height: 50,
         margin: const EdgeInsets.only(top: 39, left: 43, right: 43),
         decoration: BoxDecoration(
           color: Color.fromRGBO(255, 102, 92, 1),
-          borderRadius: new BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10.0),
         ),
-        child: Padding(
+        child: const Padding(
           padding: EdgeInsets.only(left: 67, right: 67, top: 8),
-          child: Text("Confirmar",
+          child: Text("Actualizar Datos",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: "Poppins",
@@ -134,39 +150,35 @@ class Registro extends StatelessWidget {
                   fontSize: 19,
                   color: Color.fromRGBO(255, 255, 255, 1))),
         ));
+    final ThemeController controller = Get.find();
+    var sw = Container(
+      margin: const EdgeInsets.only(top: 35),
+      child: ChangeThemeButtonWidget(
+        controller: controller,
+        context: context,
+      ),
+    );
 
-    var registra = Container(
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(top: 56),
-      child: ElevatedButton(
-          child: Text("Iniciar Sesión",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13,
-                  color: Color.fromRGBO(131, 48, 21, 1))),
-          onPressed: () {
-            print(Navigator);
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Logins()));
-          },
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
-            shadowColor:
-                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
-          )),
+    var contentPage = Container(
+      child: Column(
+        children: [
+          imageheader,
+          header,
+          namebx,
+          mailbx,
+          passbx,
+          sw,
+          actualizarBtn,
+        ],
+      ),
     );
 
     var col = Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
         child: Column(
-          children: [header, namebx, mailbx, passbx, confirmarbtn, registra],
-        ));
-    return Scaffold(
-      body: col,
-    );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [contentPage, NavSecundaria()],
+    ));
+
+    return Scaffold(body: col);
   }
 }

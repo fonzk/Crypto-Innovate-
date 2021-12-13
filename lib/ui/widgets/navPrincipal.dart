@@ -1,7 +1,7 @@
-import 'package:cryptoinnovate/feedestados.dart';
-import 'package:cryptoinnovate/feedpublicaciones.dart';
-import 'package:cryptoinnovate/regpublicaciones.dart';
-import 'package:cryptoinnovate/updatedata.dart';
+import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/pages/feedpublicaciones.dart';
+import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
+import 'package:cryptoinnovate/ui/pages/updatedata.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(NavPrincipal());

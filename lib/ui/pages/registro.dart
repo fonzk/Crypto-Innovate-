@@ -1,32 +1,13 @@
-import 'package:cryptoinnovate/ui/widgets/change__theme_buttib_widget.dart';
+import 'package:cryptoinnovate/ui/pages/logins.dart';
 import "package:flutter/material.dart";
 
-import 'navSecundaria.dart';
+class Registro extends StatelessWidget {
+  const Registro({Key? key}) : super(key: key);
 
-class UpdateData extends StatefulWidget {
-  const UpdateData({Key? key}) : super(key: key);
-
-  @override
-  State<UpdateData> createState() => _UpdateDataState();
-}
-
-class _UpdateDataState extends State<UpdateData> {
-  bool state = false;
   @override
   Widget build(BuildContext context) {
-    var imageheader = Container(
-        margin: const EdgeInsets.only(top: 40),
-        width: 173,
-        height: 168,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("assets/images/perfil.png"),
-          ),
-        ));
     var header = Container(
-        margin: const EdgeInsets.only(top: 23, left: 37, right: 37),
+        margin: const EdgeInsets.only(top: 115, left: 37, right: 37),
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           border: Border(
@@ -35,8 +16,13 @@ class _UpdateDataState extends State<UpdateData> {
         ),
         child: Row(
           children: [
-            const Text("Actualizar Datos",
-                textAlign: TextAlign.center,
+            Image.asset(
+              "assets/images/register.png",
+              width: 34,
+            ),
+            const SizedBox(width: 8),
+            const Text("Registro",
+                textAlign: TextAlign.left,
                 style: TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w500,
@@ -97,7 +83,7 @@ class _UpdateDataState extends State<UpdateData> {
 
     var nombreText = Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(top: 45, left: 43, right: 43),
+      margin: const EdgeInsets.only(top: 163, left: 43, right: 43),
       child: Text("Nombre Completo",
           textAlign: TextAlign.left,
           style: TextStyle(
@@ -130,7 +116,7 @@ class _UpdateDataState extends State<UpdateData> {
       children: [contratext, cajatextcontras],
     );
 
-    var actualizarBtn = Container(
+    var confirmarbtn = Container(
         width: MediaQuery.of(context).size.width,
         height: 50,
         margin: const EdgeInsets.only(top: 39, left: 43, right: 43),
@@ -140,7 +126,7 @@ class _UpdateDataState extends State<UpdateData> {
         ),
         child: Padding(
           padding: EdgeInsets.only(left: 67, right: 67, top: 8),
-          child: Text("Actualizar Datos",
+          child: Text("Confirmar",
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontFamily: "Poppins",
@@ -148,32 +134,39 @@ class _UpdateDataState extends State<UpdateData> {
                   fontSize: 19,
                   color: Color.fromRGBO(255, 255, 255, 1))),
         ));
-    var sw = Container(
-      margin: const EdgeInsets.only(top: 35),
-      child: ChangeThemeButtonWidget(),
-    );
 
-    var contentPage = Container(
-      child: Column(
-        children: [
-          imageheader,
-          header,
-          namebx,
-          mailbx,
-          passbx,
-          sw,
-          actualizarBtn,
-        ],
-      ),
+    var registra = Container(
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.only(top: 56),
+      child: ElevatedButton(
+          child: Text("Iniciar Sesión",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13,
+                  color: Color.fromRGBO(131, 48, 21, 1))),
+          onPressed: () {
+            print(Navigator);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Logins()));
+          },
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+            shadowColor:
+                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+          )),
     );
 
     var col = Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavSecundaria()],
+          children: [header, namebx, mailbx, passbx, confirmarbtn, registra],
         ));
-    return Scaffold(body: col);
+    return Scaffold(
+      body: col,
+    );
   }
 }

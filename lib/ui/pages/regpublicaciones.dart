@@ -1,5 +1,5 @@
-import 'package:cryptoinnovate/feedpublicaciones.dart';
-import 'package:cryptoinnovate/navSecundaria.dart';
+import 'package:cryptoinnovate/ui/pages/feedpublicaciones.dart';
+import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
 
 class RegistroPublicaciones extends StatefulWidget {
