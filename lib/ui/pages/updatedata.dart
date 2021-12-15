@@ -1,4 +1,5 @@
 import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
+import 'package:cryptoinnovate/ui/theme/colors.dart';
 import 'package:cryptoinnovate/ui/widgets/change__theme_buttib_widget.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
@@ -19,7 +20,7 @@ class _UpdateDataState extends State<UpdateData> {
         margin: const EdgeInsets.only(top: 40),
         width: 173,
         height: 168,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
             fit: BoxFit.fill,
@@ -36,8 +37,8 @@ class _UpdateDataState extends State<UpdateData> {
                   BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 2)),
         ),
         child: Row(
-          children: [
-            const Text("Actualizar Datos",
+          children: const [
+            Text("Actualizar Datos",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: "Poppins",
@@ -49,7 +50,7 @@ class _UpdateDataState extends State<UpdateData> {
     var correoelectronico = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 8, left: 43, right: 43),
-      child: Text("Correo Electronico",
+      child: const Text("Correo Electronico",
           textAlign: TextAlign.left,
           style: TextStyle(
               fontFamily: "Poppins",
@@ -60,13 +61,13 @@ class _UpdateDataState extends State<UpdateData> {
     var cajatextomail = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(196, 196, 196, 0.15),
-          borderRadius: new BorderRadius.circular(10.0),
+          color: const Color.fromRGBO(196, 196, 196, 0.15),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
               border: InputBorder.none,
               labelText: 'Email',
             ))));
@@ -74,7 +75,7 @@ class _UpdateDataState extends State<UpdateData> {
     var contratext = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 8, left: 43, right: 43),
-      child: Text("Contraseña",
+      child: const Text("Contraseña",
           textAlign: TextAlign.left,
           style: TextStyle(
               fontFamily: "Poppins",
@@ -85,14 +86,14 @@ class _UpdateDataState extends State<UpdateData> {
     var cajatextcontras = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(196, 196, 196, 0.15),
-          borderRadius: new BorderRadius.circular(10.0),
+          color: const Color.fromRGBO(196, 196, 196, 0.15),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   labelText: 'Contraseña',
                 ))));
@@ -100,7 +101,7 @@ class _UpdateDataState extends State<UpdateData> {
     var nombreText = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 45, left: 43, right: 43),
-      child: Text("Nombre Completo",
+      child: const Text("Nombre Completo",
           textAlign: TextAlign.left,
           style: TextStyle(
               fontFamily: "Poppins",
@@ -111,13 +112,13 @@ class _UpdateDataState extends State<UpdateData> {
     var cajatextonombre = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(196, 196, 196, 0.15),
+          color: const Color.fromRGBO(196, 196, 196, 0.15),
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
               border: InputBorder.none,
               labelText: 'Nombre Completo',
             ))));
@@ -137,7 +138,7 @@ class _UpdateDataState extends State<UpdateData> {
         height: 50,
         margin: const EdgeInsets.only(top: 39, left: 43, right: 43),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 102, 92, 1),
+          color: AppColors.Bittersweet,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: const Padding(
@@ -148,7 +149,7 @@ class _UpdateDataState extends State<UpdateData> {
                   fontFamily: "Poppins",
                   fontWeight: FontWeight.w400,
                   fontSize: 19,
-                  color: Color.fromRGBO(255, 255, 255, 1))),
+                  color: AppColors.Blanco)),
         ));
     final ThemeController controller = Get.find();
     var sw = Container(
@@ -159,25 +160,22 @@ class _UpdateDataState extends State<UpdateData> {
       ),
     );
 
-    var contentPage = Container(
-      child: Column(
-        children: [
-          imageheader,
-          header,
-          namebx,
-          mailbx,
-          passbx,
-          sw,
-          actualizarBtn,
-        ],
-      ),
+    var contentPage = Column(
+      children: [
+        imageheader,
+        header,
+        namebx,
+        mailbx,
+        passbx,
+        sw,
+        actualizarBtn,
+      ],
     );
 
-    var col = Container(
-        child: Column(
+    var col = Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [contentPage, NavSecundaria()],
-    ));
+      children: [contentPage, navsec(context)],
+    );
 
     return Scaffold(body: col);
   }
