@@ -1,4 +1,5 @@
 import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
 
@@ -13,16 +14,6 @@ class _RegistroEstados extends State<RegistroEstados> {
   bool state = false;
   @override
   Widget build(BuildContext context) {
-    var imagerow = Container(
-        margin: const EdgeInsets.only(left: 9),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/user.jpg"))));
-
     var publicarbtn = Container(
         width: 88,
         height: 23,
@@ -61,7 +52,7 @@ class _RegistroEstados extends State<RegistroEstados> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [imagerow, publicarbtn],
+          children: [btnLogout(), publicarbtn],
         ),
       ),
     );

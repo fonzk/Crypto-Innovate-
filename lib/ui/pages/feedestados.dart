@@ -2,6 +2,7 @@ import 'package:cryptoinnovate/domain/controller/authentication_controller.dart'
 import 'package:cryptoinnovate/ui/firebase_central.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regestados.dart';
+import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
@@ -16,20 +17,8 @@ class FeedEstados extends StatefulWidget {
 class _FeedEstados extends State<FeedEstados> {
   bool state = false;
 
-  AuthenticationController authenticationController = Get.find();
-
   @override
   Widget build(BuildContext context) {
-    var imagerow = Container(
-        margin: const EdgeInsets.only(left: 9),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/user.jpg"))));
-
     var publicarbtn = Container(
         width: 88,
         child: Padding(
@@ -45,21 +34,6 @@ class _FeedEstados extends State<FeedEstados> {
                       MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
 
-    var contentImageRow = Container(
-      child: ElevatedButton(
-          onPressed: () => {
-                authenticationController.logOut(),
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FirebaseCentral()))
-              },
-          child: imagerow,
-          style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
-              shadowColor:
-                  MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
-    );
-
     var headerrestados = Container(
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
@@ -71,7 +45,7 @@ class _FeedEstados extends State<FeedEstados> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentImageRow, publicarbtn],
+          children: [btnLogout(), publicarbtn],
         ),
       ),
     );
@@ -137,6 +111,7 @@ class _FeedEstados extends State<FeedEstados> {
                 child: Column(
                   children: [
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Text(
                         "Manuel Garcia",
                         textAlign: TextAlign.left,
@@ -148,6 +123,7 @@ class _FeedEstados extends State<FeedEstados> {
                       ),
                     ),
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: EdgeInsets.all(0.0),
                         child: Text(

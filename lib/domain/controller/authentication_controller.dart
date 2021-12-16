@@ -20,7 +20,7 @@ class AuthenticationController extends GetxController {
     print('NOK');
   }
 
-  Future<void> signUp(email, password) async {
+  Future<void> signUp(email, password, nameUser) async {
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
