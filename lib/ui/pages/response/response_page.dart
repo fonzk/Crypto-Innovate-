@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
 import 'package:cryptoinnovate/domain/controller/chat_controller.dart';
 import 'package:cryptoinnovate/domain/controller/firestore_controller.dart';
 import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
@@ -28,7 +29,7 @@ class ResponsePage extends StatelessWidget {
           }
           if (snapshot.connectionState == ConnectionState.done) {
             //Get.put(FirestoreController());
-            Get.put(AunthenticationController());
+            Get.put(AuthenticationController());
             //Get.put(ChatController());
             return FirebaseCentral();
           }
@@ -39,8 +40,6 @@ class ResponsePage extends StatelessWidget {
     );
   }
 }
-
-class AunthenticationController {}
 
 class Wrong extends StatelessWidget {
   @override

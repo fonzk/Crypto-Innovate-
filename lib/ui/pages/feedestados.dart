@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regestados.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
@@ -38,6 +39,9 @@ class _FeedEstados extends State<FeedEstados> {
                   shadowColor:
                       MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
+
+    var contentImageRow = ElevatedButton(
+        onPressed: () => print("Todo listo para logout"), child: imagerow);
 
     var headerrestados = Container(
       width: MediaQuery.of(context).size.width,
