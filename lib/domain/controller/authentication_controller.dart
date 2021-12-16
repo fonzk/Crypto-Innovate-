@@ -37,6 +37,7 @@ class AuthenticationController extends GetxController {
   Future<void> logOut() async {
     try {
       await FirebaseAuth.instance.signOut();
+      return Future.value(true);
     } catch (e) {
       return Future.error(e.toString());
     }

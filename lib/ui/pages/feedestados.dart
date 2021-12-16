@@ -1,8 +1,10 @@
 import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
+import 'package:cryptoinnovate/ui/firebase_central.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regestados.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 class FeedEstados extends StatefulWidget {
   const FeedEstados({Key? key}) : super(key: key);
@@ -13,6 +15,9 @@ class FeedEstados extends StatefulWidget {
 
 class _FeedEstados extends State<FeedEstados> {
   bool state = false;
+
+  AuthenticationController authenticationController = Get.find();
+
   @override
   Widget build(BuildContext context) {
     var imagerow = Container(
@@ -40,8 +45,20 @@ class _FeedEstados extends State<FeedEstados> {
                       MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
 
-    var contentImageRow = ElevatedButton(
-        onPressed: () => print("Todo listo para logout"), child: imagerow);
+    var contentImageRow = Container(
+      child: ElevatedButton(
+          onPressed: () => {
+                authenticationController.logOut(),
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FirebaseCentral()))
+              },
+          child: imagerow,
+          style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+              shadowColor:
+                  MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
+    );
 
     var headerrestados = Container(
       width: MediaQuery.of(context).size.width,
@@ -54,7 +71,7 @@ class _FeedEstados extends State<FeedEstados> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [imagerow, publicarbtn],
+          children: [contentImageRow, publicarbtn],
         ),
       ),
     );
