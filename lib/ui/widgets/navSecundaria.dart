@@ -1,4 +1,4 @@
-import 'package:cryptoinnovate/feedestados.dart';
+import 'package:cryptoinnovate/ui/pages/feedestados.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(NavSecundaria());
