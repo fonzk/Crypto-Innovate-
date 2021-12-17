@@ -7,7 +7,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 
 class UpdateData extends StatefulWidget {
-  const UpdateData({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const UpdateData({Key? key, required this.controller}) : super(key: key);
 
   @override
   _UpdateDataState createState() => _UpdateDataState();
@@ -174,7 +175,12 @@ class _UpdateDataState extends State<UpdateData> {
 
     var col = Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [contentPage, NavSecundaria()],
+      children: [
+        contentPage,
+        NavSecundaria(
+          controller: widget.controller,
+        )
+      ],
     );
 
     return Scaffold(body: col);

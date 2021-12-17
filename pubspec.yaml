@@ -89,6 +89,7 @@ flutter:
     - assets/images/gif.png
     - assets/images/user.jpg
     - assets/images/pubimg.png
+    - assets/images/moneda.png
 
   fonts:
     - family: Poppins

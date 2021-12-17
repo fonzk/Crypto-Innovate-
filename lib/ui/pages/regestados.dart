@@ -1,10 +1,12 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/pages/feedestados.dart';
 import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
 
 class RegistroEstados extends StatefulWidget {
-  const RegistroEstados({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const RegistroEstados({Key? key, required this.controller}) : super(key: key);
 
   @override
   State<RegistroEstados> createState() => _RegistroEstados();
@@ -25,8 +27,12 @@ class _RegistroEstados extends State<RegistroEstados> {
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FeedEstados())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FeedEstados(
+                            controller: widget.controller,
+                          ))),
               child: Text("Publicar",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -132,7 +138,12 @@ class _RegistroEstados extends State<RegistroEstados> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavSecundaria()],
+          children: [
+            contentPage,
+            NavSecundaria(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

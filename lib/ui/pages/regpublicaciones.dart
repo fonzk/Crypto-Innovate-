@@ -1,10 +1,13 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/pages/feedpublicaciones.dart';
 import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
 
 class RegistroPublicaciones extends StatefulWidget {
-  const RegistroPublicaciones({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const RegistroPublicaciones({Key? key, required this.controller})
+      : super(key: key);
 
   @override
   State<RegistroPublicaciones> createState() => _RegistroPublicaciones();
@@ -25,8 +28,12 @@ class _RegistroPublicaciones extends State<RegistroPublicaciones> {
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FeedPublicaciones())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FeedPublicaciones(
+                            controller: widget.controller,
+                          ))),
               child: Text("Publicar",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -129,7 +136,12 @@ class _RegistroPublicaciones extends State<RegistroPublicaciones> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavSecundaria()],
+          children: [
+            contentPage,
+            NavSecundaria(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

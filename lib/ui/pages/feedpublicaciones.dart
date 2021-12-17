@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
 import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
@@ -5,7 +6,9 @@ import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
 
 class FeedPublicaciones extends StatefulWidget {
-  const FeedPublicaciones({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const FeedPublicaciones({Key? key, required this.controller})
+      : super(key: key);
 
   @override
   State<FeedPublicaciones> createState() => _FeedPublicaciones();
@@ -20,8 +23,12 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeScreen(
+                            controller: widget.controller,
+                          ))),
               child: Image.asset('assets/images/comment.png'),
               style: ButtonStyle(
                   backgroundColor:
@@ -63,7 +70,9 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => RegistroPublicaciones())),
+                        builder: (context) => RegistroPublicaciones(
+                              controller: widget.controller,
+                            ))),
                 child: Text("Nuevo Publicación +",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -177,7 +186,12 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavPrincipal()],
+          children: [
+            contentPage,
+            NavPrincipal(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

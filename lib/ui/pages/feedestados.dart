@@ -1,4 +1,5 @@
 import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/firebase_central.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regestados.dart';
@@ -8,7 +9,8 @@ import "package:flutter/material.dart";
 import 'package:get/get.dart';
 
 class FeedEstados extends StatefulWidget {
-  const FeedEstados({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const FeedEstados({Key? key, required this.controller}) : super(key: key);
 
   @override
   State<FeedEstados> createState() => _FeedEstados();
@@ -24,8 +26,12 @@ class _FeedEstados extends State<FeedEstados> {
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeScreen(
+                            controller: widget.controller,
+                          ))),
               child: Image.asset('assets/images/comment.png'),
               style: ButtonStyle(
                   backgroundColor:
@@ -64,8 +70,12 @@ class _FeedEstados extends State<FeedEstados> {
                     fontSize: 25,
                     color: Color.fromRGBO(51, 51, 51, 1))),
             ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegistroEstados())),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegistroEstados(
+                              controller: widget.controller,
+                            ))),
                 child: Text("Nuevo estado +",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -166,7 +176,12 @@ class _FeedEstados extends State<FeedEstados> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavPrincipal()],
+          children: [
+            contentPage,
+            NavPrincipal(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

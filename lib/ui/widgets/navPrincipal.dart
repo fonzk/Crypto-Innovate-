@@ -1,12 +1,15 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
+import 'package:cryptoinnovate/ui/pages/feedapi.dart';
 import 'package:cryptoinnovate/ui/pages/feedestados.dart';
 import 'package:cryptoinnovate/ui/pages/feedpublicaciones.dart';
 import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
 import 'package:cryptoinnovate/ui/pages/updatedata.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(NavPrincipal());
-
 class NavPrincipal extends StatefulWidget {
+  final ThemeController controller;
+
+  const NavPrincipal({Key? key, required this.controller}) : super(key: key);
   @override
   State<NavPrincipal> createState() => _NavPrincipalState();
 }
@@ -17,7 +20,11 @@ class _NavPrincipalState extends State<NavPrincipal> {
     // botones de navegacion
     var btnHomeButton = new ElevatedButton(
       onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => FeedEstados())),
+          context,
+          MaterialPageRoute(
+              builder: (context) => FeedEstados(
+                    controller: widget.controller,
+                  ))),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
@@ -26,18 +33,38 @@ class _NavPrincipalState extends State<NavPrincipal> {
     );
 
     var btnPublicButton = new ElevatedButton(
-      onPressed: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => FeedPublicaciones())),
+      onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => FeedPublicaciones(
+                    controller: widget.controller,
+                  ))),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
           shadowColor: MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0))),
       child: Image.asset('assets/images/image.png'),
     );
-
+    var btnApiButton = new ElevatedButton(
+      onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Feedapi(
+                    controller: widget.controller,
+                  ))),
+      style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
+          shadowColor: MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0))),
+      child: Image.asset('assets/images/moneda.png'),
+    );
     var btnNewsButton = new ElevatedButton(
-      onPressed: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => RegistroPublicaciones())),
+      onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => RegistroPublicaciones(
+                    controller: widget.controller,
+                  ))),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
@@ -47,7 +74,11 @@ class _NavPrincipalState extends State<NavPrincipal> {
 
     var btnConfingButton = new ElevatedButton(
       onPressed: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => UpdateData())),
+          context,
+          MaterialPageRoute(
+              builder: (context) => UpdateData(
+                    controller: widget.controller,
+                  ))),
       style: ButtonStyle(
           backgroundColor:
               MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)),
@@ -65,6 +96,7 @@ class _NavPrincipalState extends State<NavPrincipal> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   btnHomeButton,
+                  btnApiButton,
                   btnPublicButton,
                   btnNewsButton,
                   btnConfingButton,
