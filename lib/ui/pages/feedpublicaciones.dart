@@ -1,5 +1,6 @@
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
+import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
 
@@ -14,16 +15,6 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
   bool state = false;
   @override
   Widget build(BuildContext context) {
-    var imagerow = Container(
-        margin: const EdgeInsets.only(left: 9),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/user.jpg"))));
-
     var publicarbtn = Container(
         width: 88,
         child: Padding(
@@ -50,7 +41,7 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [imagerow, publicarbtn],
+          children: [btnLogout(), publicarbtn],
         ),
       ),
     );
