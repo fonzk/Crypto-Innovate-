@@ -65,10 +65,11 @@ class _FeedEstados extends State<FeedEstados> {
             Text("Estados",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 25,
-                    color: Color.fromRGBO(51, 51, 51, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 25,
+                  // color: Color.fromRGBO(51, 51, 51, 1)
+                )),
             ElevatedButton(
                 onPressed: () => Navigator.push(
                     context,
@@ -126,10 +127,11 @@ class _FeedEstados extends State<FeedEstados> {
                         "Manuel Garcia",
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            color: Color.fromRGBO(51, 51, 51, 1)),
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          // color: Color.fromRGBO(51, 51, 51, 1)
+                        ),
                       ),
                     ),
                     Container(
@@ -140,10 +142,11 @@ class _FeedEstados extends State<FeedEstados> {
                             '"Nunca es tarde para ser lo que deberías haber sido"',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.normal,
-                                fontSize: 14,
-                                color: Color.fromRGBO(51, 51, 51, 1))),
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14,
+                              // color: Color.fromRGBO(51, 51, 51, 1)
+                            )),
                       ),
                     ),
                   ],

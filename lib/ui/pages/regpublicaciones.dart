@@ -80,10 +80,11 @@ class _RegistroPublicaciones extends State<RegistroPublicaciones> {
           child: Text(
             "¿Qué estás pensando?",
             style: TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w400,
-                fontSize: 13,
-                color: Color.fromRGBO(51, 51, 51, 1)),
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 13,
+              // color: Color.fromRGBO(51, 51, 51, 1)
+            ),
           ),
         ),
       ],

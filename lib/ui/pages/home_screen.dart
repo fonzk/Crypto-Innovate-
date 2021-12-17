@@ -31,10 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text("Chats",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w400,
-                fontSize: 25,
-                color: Color.fromRGBO(51, 51, 51, 1))));
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 25,
+              // color: Color.fromRGBO(51, 51, 51, 1)
+            )));
 
     var headerrestados = Container(
       width: MediaQuery.of(context).size.width,

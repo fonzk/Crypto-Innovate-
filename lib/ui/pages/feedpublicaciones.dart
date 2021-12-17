@@ -62,10 +62,11 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
             Text("Publicaciones",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 25,
-                    color: Color.fromRGBO(51, 51, 51, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 25,
+                  // color: Color.fromRGBO(51, 51, 51, 1)
+                )),
             ElevatedButton(
                 onPressed: () => Navigator.push(
                     context,
@@ -127,10 +128,11 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                             "Manuel Garcia",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 12,
-                                color: Color.fromRGBO(51, 51, 51, 1)),
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12,
+                              // color: Color.fromRGBO(51, 51, 51, 1)
+                            ),
                           ),
                         ),
                         Container(
@@ -141,10 +143,11 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                             child: Text('Posicionamiento digital',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 10,
-                                    color: Color.fromRGBO(51, 51, 51, 1))),
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 10,
+                                  // color: Color.fromRGBO(51, 51, 51, 1)
+                                )),
                           ),
                         ),
                         Container(
