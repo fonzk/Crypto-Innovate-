@@ -1,4 +1,5 @@
 import 'package:cryptoinnovate/ui/pages/logins.dart';
+import 'package:cryptoinnovate/ui/pages/response/response_page.dart';
 import "package:flutter/material.dart";
 
 class Registro extends StatelessWidget {
@@ -148,8 +149,8 @@ class Registro extends StatelessWidget {
                   color: Color.fromRGBO(131, 48, 21, 1))),
           onPressed: () {
             print(Navigator);
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Logins()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ResponsePage()));
           },
           style: ButtonStyle(
             backgroundColor:

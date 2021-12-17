@@ -1,8 +1,10 @@
+import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
 import 'package:cryptoinnovate/ui/pages/feedestados.dart';
 import 'package:cryptoinnovate/ui/pages/registro.dart';
 import 'package:cryptoinnovate/ui/theme/colors.dart';
 
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 class Logins extends StatefulWidget {
   const Logins({Key? key}) : super(key: key);
@@ -12,6 +14,25 @@ class Logins extends StatefulWidget {
 }
 
 class _LoginsState extends State<Logins> {
+  final _formKey = GlobalKey<FormState>();
+  final controllerEmail = TextEditingController();
+  final controllerPassword = TextEditingController();
+  AuthenticationController authenticationController = Get.find();
+
+  _login(theEmail, thePassword) async {
+    print('_login $theEmail $thePassword');
+    try {
+      await authenticationController.login(theEmail, thePassword);
+    } catch (err) {
+      Get.snackbar(
+        "Login",
+        err.toString(),
+        icon: Icon(Icons.person, color: Colors.red),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var header = Container(
@@ -59,10 +80,19 @@ class _LoginsState extends State<Logins> {
         child: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
-                decoration: const InputDecoration(
-              border: InputBorder.none,
-              labelText: 'Email',
-            ))));
+                keyboardType: TextInputType.emailAddress,
+                controller: this.controllerEmail,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  labelText: 'Email',
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Enter email";
+                  } else if (!value.contains('@')) {
+                    return "Enter valid email address";
+                  }
+                })));
 
     var contratext = Container(
       width: MediaQuery.of(context).size.width,
@@ -85,11 +115,21 @@ class _LoginsState extends State<Logins> {
         child: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
-                obscureText: true,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  labelText: 'Contraseña',
-                ))));
+              controller: this.controllerPassword,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                labelText: 'Contraseña',
+              ),
+              obscureText: true,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "Enter password";
+                } else if (value.length < 6) {
+                  return "Password should have at least 6 characters";
+                }
+                return null;
+              },
+            )));
 
     var forgetpass = Container(
       width: MediaQuery.of(context).size.width,
@@ -129,11 +169,14 @@ class _LoginsState extends State<Logins> {
                       fontWeight: FontWeight.w400,
                       fontSize: 19,
                       color: Color.fromRGBO(255, 255, 255, 1))),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const FeedEstados()));
+              onPressed: () async {
+                // this line dismiss the keyboard by taking away the focus of the TextFormField and giving it to an unused
+                FocusScope.of(context).requestFocus(FocusNode());
+                final form = _formKey.currentState;
+                form!.save();
+                if (_formKey.currentState!.validate()) {
+                  await _login(controllerEmail.text, controllerPassword.text);
+                }
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(
@@ -168,9 +211,22 @@ class _LoginsState extends State<Logins> {
       ),
     );
 
-    var col = Column(
-      children: [header, mailbx, passbx, forgetpass, accederbtn, registra],
-    );
+    var col = Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              header,
+              mailbx,
+              passbx,
+              forgetpass,
+              accederbtn,
+              registra
+            ],
+          ),
+        ));
     return col;
   }
 }

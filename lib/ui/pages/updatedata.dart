@@ -174,7 +174,7 @@ class _UpdateDataState extends State<UpdateData> {
 
     var col = Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [contentPage, navsec(context)],
+      children: [contentPage, NavSecundaria()],
     );
 
     return Scaffold(body: col);
