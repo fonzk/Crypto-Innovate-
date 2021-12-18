@@ -1,6 +1,8 @@
 import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
-import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/pages/pass.dart';
 import 'package:cryptoinnovate/ui/pages/registro.dart';
+import 'package:cryptoinnovate/ui/theme/colors.dart';
+
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 
@@ -25,7 +27,7 @@ class _LoginsState extends State<Logins> {
       Get.snackbar(
         "Login",
         err.toString(),
-        icon: Icon(Icons.person, color: Colors.red),
+        icon: const Icon(Icons.person, color: Colors.red),
         snackPosition: SnackPosition.BOTTOM,
       );
     }
@@ -38,8 +40,7 @@ class _LoginsState extends State<Logins> {
         margin: const EdgeInsets.only(top: 115, left: 37, right: 37),
         decoration: const BoxDecoration(
           border: Border(
-              bottom:
-                  BorderSide(color: Color.fromRGBO(255, 102, 92, 1), width: 2)),
+              bottom: BorderSide(color: AppColors.Bittersweet, width: 2)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,17 +52,17 @@ class _LoginsState extends State<Logins> {
             const SizedBox(width: 8),
             const Text("inicio de sesión",
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 35,
-                    color: Color.fromRGBO(87, 87, 87, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 35,
+                )),
           ],
         ));
 
     var correoelectronico = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 215, left: 43, right: 43),
-      child: Text("Correo Electronico",
+      child: const Text("Correo Electronico",
           textAlign: TextAlign.left,
           style: TextStyle(
               fontFamily: "Poppins",
@@ -73,15 +74,15 @@ class _LoginsState extends State<Logins> {
     var cajatextomail = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(196, 196, 196, 0.15),
-          borderRadius: new BorderRadius.circular(10.0),
+          color: const Color.fromRGBO(196, 196, 196, 0.15),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                controller: this.controllerEmail,
-                decoration: InputDecoration(
+                controller: controllerEmail,
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   labelText: 'Email',
                 ),
@@ -89,14 +90,14 @@ class _LoginsState extends State<Logins> {
                   if (value!.isEmpty) {
                     return "Enter email";
                   } else if (!value.contains('@')) {
-                    return "Enter valid email address";
+                    return "Ingrese un Imail valido";
                   }
                 })));
 
     var contratext = Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(top: 8, left: 43, right: 43),
-      child: Text("Contraseña",
+      child: const Text("Contraseña",
           textAlign: TextAlign.left,
           style: TextStyle(
               fontFamily: "Poppins",
@@ -108,38 +109,51 @@ class _LoginsState extends State<Logins> {
     var cajatextcontras = Container(
         margin: const EdgeInsets.only(left: 43, right: 43),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(196, 196, 196, 0.15),
-          borderRadius: new BorderRadius.circular(10.0),
+          color: const Color.fromRGBO(196, 196, 196, 0.15),
+          borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 5),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
-              controller: this.controllerPassword,
-              decoration: InputDecoration(
+              controller: controllerPassword,
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 labelText: 'Contraseña',
               ),
               obscureText: true,
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "Enter password";
-                } else if (value.length < 6) {
-                  return "Password should have at least 6 characters";
+                  return "Entre su Contraseña";
                 }
                 return null;
               },
             )));
-
     var forgetpass = Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(top: 8, right: 43),
-      child: Text("Olvidaste tu contraseña?",
-          textAlign: TextAlign.right,
-          style: TextStyle(
-              fontFamily: "Poppins",
-              fontWeight: FontWeight.w400,
-              fontSize: 13,
-              color: Color.fromRGBO(231, 84, 37, 1))),
+      alignment: Alignment.centerRight,
+      margin: const EdgeInsets.only(top: 8, right: 20),
+      child: ElevatedButton(
+        child: const Text("Olvidaste tu contraseña?",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: AppColors.Flame)),
+        onPressed: () {
+          // direcciónamiento a Resgistro
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Scaffold(body: Pass())));
+        },
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
+          shadowColor:
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
+        ),
+      ),
     );
 
     var mailbx = Column(
@@ -155,13 +169,13 @@ class _LoginsState extends State<Logins> {
       height: 50,
       margin: const EdgeInsets.only(top: 39, left: 43, right: 43),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 102, 92, 1),
-        borderRadius: new BorderRadius.circular(10.0),
+        color: const Color.fromRGBO(255, 102, 92, 1),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
-          padding: EdgeInsets.only(left: 67, right: 67, top: 8),
+          padding: const EdgeInsets.only(left: 67, right: 67, top: 8),
           child: ElevatedButton(
-              child: Text("Acceder",
+              child: const Text("Acceder",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: "Poppins",
@@ -178,10 +192,10 @@ class _LoginsState extends State<Logins> {
                 }
               },
               style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
-                shadowColor:
-                    MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+                backgroundColor: MaterialStateProperty.all(
+                    const Color.fromRGBO(131, 48, 21, 0)),
+                shadowColor: MaterialStateProperty.all(
+                    const Color.fromRGBO(131, 48, 21, 0)),
               ))),
     );
 
@@ -189,23 +203,25 @@ class _LoginsState extends State<Logins> {
       width: MediaQuery.of(context).size.width * 0.7,
       margin: const EdgeInsets.only(top: 56),
       child: ElevatedButton(
-        child: Text("¿No tienes una cuenta? Regístrate ",
+        child: const Text("¿No tienes una cuenta? Regístrate ",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontFamily: "Poppins",
                 fontWeight: FontWeight.w400,
                 fontSize: 13,
-                color: Color.fromRGBO(131, 48, 21, 1))),
+                color: AppColors.Flame)),
         onPressed: () {
           // direcciónamiento a Resgistro
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Registro()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Scaffold(body: Registro())));
         },
         style: ButtonStyle(
           backgroundColor:
-              MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
           shadowColor:
-              MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
         ),
       ),
     );
@@ -227,10 +243,5 @@ class _LoginsState extends State<Logins> {
           ),
         ));
     return col;
-    // return Scaffold(
-    //   body: Container(
-    //     child: col,
-    //   ),
-    // );
   }
 }

@@ -1,11 +1,16 @@
 import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
+import 'package:cryptoinnovate/ui/firebase_central.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regestados.dart';
+import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 class FeedEstados extends StatefulWidget {
-  const FeedEstados({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const FeedEstados({Key? key, required this.controller}) : super(key: key);
 
   @override
   State<FeedEstados> createState() => _FeedEstados();
@@ -13,25 +18,20 @@ class FeedEstados extends StatefulWidget {
 
 class _FeedEstados extends State<FeedEstados> {
   bool state = false;
+
   @override
   Widget build(BuildContext context) {
-    var imagerow = Container(
-        margin: const EdgeInsets.only(left: 9),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/user.jpg"))));
-
     var publicarbtn = Container(
         width: 88,
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeScreen(
+                            controller: widget.controller,
+                          ))),
               child: Image.asset('assets/images/comment.png'),
               style: ButtonStyle(
                   backgroundColor:
@@ -39,9 +39,6 @@ class _FeedEstados extends State<FeedEstados> {
                   shadowColor:
                       MaterialStateProperty.all(Color.fromRGBO(0, 0, 0, 0)))),
         ));
-
-    var contentImageRow = ElevatedButton(
-        onPressed: () => print("Todo listo para logout"), child: imagerow);
 
     var headerrestados = Container(
       width: MediaQuery.of(context).size.width,
@@ -54,7 +51,7 @@ class _FeedEstados extends State<FeedEstados> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [imagerow, publicarbtn],
+          children: [btnLogout(), publicarbtn],
         ),
       ),
     );
@@ -68,13 +65,18 @@ class _FeedEstados extends State<FeedEstados> {
             Text("Estados",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 25,
-                    color: Color.fromRGBO(51, 51, 51, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 25,
+                  // color: Color.fromRGBO(51, 51, 51, 1)
+                )),
             ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegistroEstados())),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegistroEstados(
+                              controller: widget.controller,
+                            ))),
                 child: Text("Nuevo estado +",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -120,27 +122,31 @@ class _FeedEstados extends State<FeedEstados> {
                 child: Column(
                   children: [
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Text(
                         "Manuel Garcia",
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            color: Color.fromRGBO(51, 51, 51, 1)),
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          // color: Color.fromRGBO(51, 51, 51, 1)
+                        ),
                       ),
                     ),
                     Container(
+                      alignment: Alignment.centerLeft,
                       child: Padding(
                         padding: EdgeInsets.all(0.0),
                         child: Text(
                             '"Nunca es tarde para ser lo que deberías haber sido"',
                             textAlign: TextAlign.justify,
                             style: TextStyle(
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.normal,
-                                fontSize: 14,
-                                color: Color.fromRGBO(51, 51, 51, 1))),
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14,
+                              // color: Color.fromRGBO(51, 51, 51, 1)
+                            )),
                       ),
                     ),
                   ],
@@ -173,7 +179,12 @@ class _FeedEstados extends State<FeedEstados> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavPrincipal()],
+          children: [
+            contentPage,
+            NavPrincipal(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

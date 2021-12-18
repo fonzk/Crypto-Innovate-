@@ -1,3 +1,4 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/widgets/category_selector.dart';
 import 'package:cryptoinnovate/ui/widgets/favorite_contacts.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
@@ -5,6 +6,9 @@ import 'package:cryptoinnovate/ui/widgets/recent_chats.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+  final ThemeController controller;
+
+  const HomeScreen({Key? key, required this.controller}) : super(key: key);
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -27,10 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Text("Chats",
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w400,
-                fontSize: 25,
-                color: Color.fromRGBO(51, 51, 51, 1))));
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 25,
+              // color: Color.fromRGBO(51, 51, 51, 1)
+            )));
 
     var headerrestados = Container(
       width: MediaQuery.of(context).size.width,
@@ -62,7 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   headerrestados,
                   RecentChats(),
-                  NavSecundaria()
+                  NavSecundaria(
+                    controller: widget.controller,
+                  )
                 ],
               ),
             ),

@@ -1,9 +1,12 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
 
 class RegistroEstados extends StatefulWidget {
-  const RegistroEstados({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const RegistroEstados({Key? key, required this.controller}) : super(key: key);
 
   @override
   State<RegistroEstados> createState() => _RegistroEstados();
@@ -13,16 +16,6 @@ class _RegistroEstados extends State<RegistroEstados> {
   bool state = false;
   @override
   Widget build(BuildContext context) {
-    var imagerow = Container(
-        margin: const EdgeInsets.only(left: 9),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/user.jpg"))));
-
     var publicarbtn = Container(
         width: 88,
         height: 23,
@@ -34,8 +27,12 @@ class _RegistroEstados extends State<RegistroEstados> {
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => FeedEstados())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FeedEstados(
+                            controller: widget.controller,
+                          ))),
               child: Text("Publicar",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -61,7 +58,7 @@ class _RegistroEstados extends State<RegistroEstados> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [imagerow, publicarbtn],
+          children: [btnLogout(), publicarbtn],
         ),
       ),
     );
@@ -83,10 +80,11 @@ class _RegistroEstados extends State<RegistroEstados> {
           child: Text(
             "¿Qué estás pensando?",
             style: TextStyle(
-                fontFamily: "Poppins",
-                fontWeight: FontWeight.w400,
-                fontSize: 13,
-                color: Color.fromRGBO(51, 51, 51, 1)),
+              fontFamily: "Poppins",
+              fontWeight: FontWeight.w400,
+              fontSize: 13,
+              // color: Color.fromRGBO(51, 51, 51, 1)
+            ),
           ),
         ),
       ],
@@ -141,7 +139,12 @@ class _RegistroEstados extends State<RegistroEstados> {
         width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavSecundaria()],
+          children: [
+            contentPage,
+            NavSecundaria(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

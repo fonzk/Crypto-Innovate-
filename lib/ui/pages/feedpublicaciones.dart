@@ -1,10 +1,14 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
+import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
 
 class FeedPublicaciones extends StatefulWidget {
-  const FeedPublicaciones({Key? key}) : super(key: key);
+  final ThemeController controller;
+  const FeedPublicaciones({Key? key, required this.controller})
+      : super(key: key);
 
   @override
   State<FeedPublicaciones> createState() => _FeedPublicaciones();
@@ -14,23 +18,17 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
   bool state = false;
   @override
   Widget build(BuildContext context) {
-    var imagerow = Container(
-        margin: const EdgeInsets.only(left: 9),
-        width: 40,
-        height: 40,
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage("assets/images/user.jpg"))));
-
     var publicarbtn = Container(
         width: 88,
         child: Padding(
           padding: EdgeInsets.only(top: 3, bottom: 3),
           child: ElevatedButton(
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen())),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => HomeScreen(
+                            controller: widget.controller,
+                          ))),
               child: Image.asset('assets/images/comment.png'),
               style: ButtonStyle(
                   backgroundColor:
@@ -50,7 +48,7 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
         padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [imagerow, publicarbtn],
+          children: [btnLogout(), publicarbtn],
         ),
       ),
     );
@@ -64,15 +62,18 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
             Text("Publicaciones",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w400,
-                    fontSize: 25,
-                    color: Color.fromRGBO(51, 51, 51, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 25,
+                  // color: Color.fromRGBO(51, 51, 51, 1)
+                )),
             ElevatedButton(
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => RegistroPublicaciones())),
+                        builder: (context) => RegistroPublicaciones(
+                              controller: widget.controller,
+                            ))),
                 child: Text("Nuevo Publicación +",
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -127,10 +128,11 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                             "Manuel Garcia",
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 12,
-                                color: Color.fromRGBO(51, 51, 51, 1)),
+                              fontFamily: "Poppins",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12,
+                              // color: Color.fromRGBO(51, 51, 51, 1)
+                            ),
                           ),
                         ),
                         Container(
@@ -141,10 +143,11 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
                             child: Text('Posicionamiento digital',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 10,
-                                    color: Color.fromRGBO(51, 51, 51, 1))),
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 10,
+                                  // color: Color.fromRGBO(51, 51, 51, 1)
+                                )),
                           ),
                         ),
                         Container(
@@ -186,7 +189,12 @@ class _FeedPublicaciones extends State<FeedPublicaciones> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [contentPage, NavPrincipal()],
+          children: [
+            contentPage,
+            NavPrincipal(
+              controller: widget.controller,
+            )
+          ],
         ));
 
     return Scaffold(

@@ -41,4 +41,12 @@ class AppColors {
     primaryVariant: darkPrimaryColor,
     secondary: accentColor,
   );
+
+  //fonzk colors
+  static const Color RichBlackFrogra29 = const Color(0xff030913);
+  static const Color Bittersweet = const Color(0xffff665c);
+  static const Color Flame = const Color(0xffE75425);
+  static const Color Cultured = const Color(0xfffafafa);
+  static const Color Opal = const Color(0xffa4bab7);
+  static const Color Blanco = const Color.fromRGBO(255, 255, 255, 1);
 }

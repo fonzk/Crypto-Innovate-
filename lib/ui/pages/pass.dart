@@ -1,3 +1,6 @@
+import 'package:cryptoinnovate/ui/pages/registro.dart';
+import 'package:cryptoinnovate/ui/pages/response/response_page.dart';
+import 'package:cryptoinnovate/ui/theme/colors.dart';
 import "package:flutter/material.dart";
 
 class Pass extends StatelessWidget {
@@ -19,10 +22,11 @@ class Pass extends StatelessWidget {
             const Text("Recupera tu cuenta",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 35,
-                    color: Color.fromRGBO(87, 87, 87, 1))),
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w500,
+                  fontSize: 35,
+                  // color: Color.fromRGBO(87, 87, 87, 1)
+                )),
           ],
         ));
     var correoelectronico = Container(
@@ -73,9 +77,9 @@ class Pass extends StatelessWidget {
                   color: Color.fromRGBO(255, 255, 255, 1))),
         ));
 
-    var registra = Container(
+    var registra_old = Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(top: 146, bottom: 78),
+      margin: const EdgeInsets.only(top: 146),
       child: Text("¿No tienes una cuenta? Regístrate",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -84,11 +88,61 @@ class Pass extends StatelessWidget {
               fontSize: 13,
               color: Color.fromRGBO(131, 48, 21, 1))),
     );
+    var registra = Container(
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.only(top: 146),
+      child: ElevatedButton(
+        child: const Text("¿No tienes una cuenta? Regístrate ",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: AppColors.Flame)),
+        onPressed: () {
+          // direcciónamiento a Resgistro
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Scaffold(body: Registro())));
+        },
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
+          shadowColor:
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
+        ),
+      ),
+    );
+    var login = Container(
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.only(top: 5),
+      child: ElevatedButton(
+          child: Text("Iniciar Sesión",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 13,
+                  color: AppColors.Flame)),
+          onPressed: () {
+            print(Navigator);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ResponsePage()));
+          },
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+            shadowColor:
+                MaterialStateProperty.all(Color.fromRGBO(131, 48, 21, 0)),
+          )),
+    );
+
     var col = Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(
-          children: [header, mailbx, recuperarBtn, registra],
+          children: [header, mailbx, recuperarBtn, registra, login],
         ));
     return col;
   }

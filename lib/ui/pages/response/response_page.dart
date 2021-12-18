@@ -31,7 +31,9 @@ class ResponsePage extends StatelessWidget {
             //Get.put(FirestoreController());
             Get.put(AuthenticationController());
             //Get.put(ChatController());
-            return FirebaseCentral();
+            return FirebaseCentral(
+              controller: controller,
+            );
           }
 
           return Loading();
