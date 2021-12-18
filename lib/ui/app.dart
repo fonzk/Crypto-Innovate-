@@ -2,7 +2,6 @@ import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart
 import 'package:cryptoinnovate/domain/use_case/theme_management.dart';
 import 'package:cryptoinnovate/ui/pages/response/response_page.dart';
 import 'package:cryptoinnovate/ui/theme/theme.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

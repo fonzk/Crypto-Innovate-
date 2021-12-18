@@ -1,5 +1,5 @@
 import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
-import 'package:cryptoinnovate/ui/pages/feedestados.dart';
+import 'package:cryptoinnovate/ui/pages/pass.dart';
 import 'package:cryptoinnovate/ui/pages/registro.dart';
 import 'package:cryptoinnovate/ui/theme/colors.dart';
 
@@ -27,7 +27,7 @@ class _LoginsState extends State<Logins> {
       Get.snackbar(
         "Login",
         err.toString(),
-        icon: Icon(Icons.person, color: Colors.red),
+        icon: const Icon(Icons.person, color: Colors.red),
         snackPosition: SnackPosition.BOTTOM,
       );
     }
@@ -81,8 +81,8 @@ class _LoginsState extends State<Logins> {
             padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                controller: this.controllerEmail,
-                decoration: InputDecoration(
+                controller: controllerEmail,
+                decoration: const InputDecoration(
                   border: InputBorder.none,
                   labelText: 'Email',
                 ),
@@ -90,7 +90,7 @@ class _LoginsState extends State<Logins> {
                   if (value!.isEmpty) {
                     return "Enter email";
                   } else if (!value.contains('@')) {
-                    return "Enter valid email address";
+                    return "Ingrese un Imail valido";
                   }
                 })));
 
@@ -115,32 +115,45 @@ class _LoginsState extends State<Logins> {
         child: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
-              controller: this.controllerPassword,
-              decoration: InputDecoration(
+              controller: controllerPassword,
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 labelText: 'Contraseña',
               ),
               obscureText: true,
               validator: (value) {
                 if (value!.isEmpty) {
-                  return "Enter password";
-                } else if (value.length < 6) {
-                  return "Password should have at least 6 characters";
+                  return "Entre su Contraseña";
                 }
                 return null;
               },
             )));
-
     var forgetpass = Container(
       width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(top: 8, right: 43),
-      child: const Text("Olvidaste tu contraseña?",
-          textAlign: TextAlign.right,
-          style: TextStyle(
-              fontFamily: "Poppins",
-              fontWeight: FontWeight.w400,
-              fontSize: 13,
-              color: Color.fromRGBO(231, 84, 37, 1))),
+      alignment: Alignment.centerRight,
+      margin: const EdgeInsets.only(top: 8, right: 20),
+      child: ElevatedButton(
+        child: const Text("Olvidaste tu contraseña?",
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400,
+                fontSize: 13,
+                color: AppColors.Flame)),
+        onPressed: () {
+          // direcciónamiento a Resgistro
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Scaffold(body: Pass())));
+        },
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
+          shadowColor:
+              MaterialStateProperty.all(const Color.fromRGBO(131, 48, 21, 0)),
+        ),
+      ),
     );
 
     var mailbx = Column(
@@ -199,8 +212,10 @@ class _LoginsState extends State<Logins> {
                 color: AppColors.Flame)),
         onPressed: () {
           // direcciónamiento a Resgistro
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const Registro()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Scaffold(body: Registro())));
         },
         style: ButtonStyle(
           backgroundColor:
