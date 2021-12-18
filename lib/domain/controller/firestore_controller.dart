@@ -1,17 +1,15 @@
 import 'dart:async';
-/*
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:f_202110_firebase/data/model/record.dart';
+import 'package:cryptoinnovate/data/model/record.dart';
 import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
-class FirestoreController extends GetxController {
+class FirebaseController extends GetxController {
   var _records = <Record>[].obs;
-  final CollectionReference baby =
-      FirebaseFirestore.instance.collection('baby');
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('users');
   final Stream<QuerySnapshot> _usersStream =
-      FirebaseFirestore.instance.collection('baby').snapshots();
+      FirebaseFirestore.instance.collection('users').snapshots();
   late StreamSubscription<Object?> streamSubscription;
 
   suscribeUpdates() async {
@@ -32,19 +30,22 @@ class FirestoreController extends GetxController {
 
   List<Record> get entries => _records;
 
-  addEntry(name) {
-    baby
-        .add({'name': name, 'votes': 0})
-        .then((value) => print("Baby added"))
-        .catchError((onError) => print("Failed to add baby $onError"));
+  addEntry(name, email, pass) {
+    users
+        .add({'email': email, 'full_name': name, 'pass': pass})
+        .then((value) => print("User added"))
+        .catchError((onError) => print("Failed to add users $onError"));
   }
 
   updateEntry(Record record) {
-    record.reference.update({'votes': record.votes + 1});
+    record.reference.update({
+      'email': record.email,
+      'full_name': record.full_name,
+      'pass': record.pass
+    });
   }
 
   deleteEntry(Record record) {
     record.reference.delete();
   }
 }
-*/
