@@ -1,4 +1,5 @@
 import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
+import 'package:cryptoinnovate/domain/controller/useradd.dart';
 import 'package:cryptoinnovate/ui/pages/response/response_page.dart';
 import 'package:cryptoinnovate/ui/theme/colors.dart';
 import "package:flutter/material.dart";
@@ -20,7 +21,7 @@ class _RegistroState extends State<Registro> {
   _signup(theEmail, thePassword, theUser) async {
     try {
       await authenticationController.signUp(theEmail, thePassword, theUser);
-
+      await AddUser(theUser, theEmail, thePassword).addUser();
       Get.snackbar(
         "Sign Up",
         'OK',
