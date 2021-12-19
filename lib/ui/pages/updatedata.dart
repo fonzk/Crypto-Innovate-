@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cryptoinnovate/domain/controller/authentication_controller.dart';
 import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/theme/colors.dart';
 import 'package:cryptoinnovate/ui/widgets/change__theme_buttib_widget.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/material.dart";
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
@@ -15,6 +18,9 @@ class UpdateData extends StatefulWidget {
 }
 
 class _UpdateDataState extends State<UpdateData> {
+  AuthenticationController authenticationController = Get.find();
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
   @override
   Widget build(BuildContext context) {
     var imageheader = Container(
@@ -68,10 +74,11 @@ class _UpdateDataState extends State<UpdateData> {
         child: Padding(
             padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
             child: TextFormField(
+                initialValue: authenticationController.userEmail(),
                 decoration: const InputDecoration(
-              border: InputBorder.none,
-              labelText: 'Email',
-            ))));
+                  border: InputBorder.none,
+                  labelText: 'Email',
+                ))));
 
     var contratext = Container(
       width: MediaQuery.of(context).size.width,
