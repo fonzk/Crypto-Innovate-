@@ -1,9 +1,15 @@
+import 'package:cryptoinnovate/domain/use_case/controllers/notifications.dart';
 import 'package:cryptoinnovate/ui/app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationController notificationController =
+      Get.put(NotificationController());
+  notificationController.createChannel(
+      id: "user-location", name: "user Location", description: "My Location");
 
   await Firebase.initializeApp(
     // Replace with actual values
