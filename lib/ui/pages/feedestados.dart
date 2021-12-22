@@ -3,6 +3,7 @@ import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart
 import 'package:cryptoinnovate/ui/firebase_central.dart';
 import 'package:cryptoinnovate/ui/pages/home_screen.dart';
 import 'package:cryptoinnovate/ui/pages/regestados.dart';
+import 'package:cryptoinnovate/ui/pages/ubication.dart';
 import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navPrincipal.dart';
 import "package:flutter/material.dart";
@@ -166,6 +167,8 @@ class _FeedEstados extends State<FeedEstados> {
         ],
       ),
     );
+    
+    
 
     var contentPage = Container(
       child: Column(
@@ -173,6 +176,7 @@ class _FeedEstados extends State<FeedEstados> {
         children: [headerrestados, rowSloganView, contenStates],
       ),
     );
+
 
     var col = Container(
         width: MediaQuery.of(context).size.width,
@@ -188,7 +192,7 @@ class _FeedEstados extends State<FeedEstados> {
         ));
 
     return Scaffold(
-      body: col,
+      body: col, 
     );
   }
 }
