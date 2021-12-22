@@ -1,5 +1,6 @@
 import 'package:cryptoinnovate/domain/use_case/controllers/theme_controller.dart';
 import 'package:cryptoinnovate/ui/pages/feedpublicaciones.dart';
+import 'package:cryptoinnovate/ui/pages/ubication.dart';
 import 'package:cryptoinnovate/ui/widgets/btnLogout.dart';
 import 'package:cryptoinnovate/ui/widgets/navSecundaria.dart';
 import "package:flutter/material.dart";
@@ -118,7 +119,10 @@ class _RegistroPublicaciones extends State<RegistroPublicaciones> {
           ),
           Padding(
             padding: EdgeInsets.only(left: 12),
-            child: Image.asset("assets/images/location.png"),
+            child: IconButton(onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ubication( ))), icon: Icon(Icons.gps_fixed)),        
           ),
           Padding(
               padding: EdgeInsets.only(left: 12),

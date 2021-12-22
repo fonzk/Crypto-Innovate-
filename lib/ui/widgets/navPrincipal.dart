@@ -3,6 +3,7 @@ import 'package:cryptoinnovate/ui/pages/feedapi.dart';
 import 'package:cryptoinnovate/ui/pages/feedestados.dart';
 import 'package:cryptoinnovate/ui/pages/feedpublicaciones.dart';
 import 'package:cryptoinnovate/ui/pages/regpublicaciones.dart';
+import 'package:cryptoinnovate/ui/pages/ubication.dart';
 import 'package:cryptoinnovate/ui/pages/updatedata.dart';
 import 'package:flutter/material.dart';
 
@@ -86,6 +87,7 @@ class _NavPrincipalState extends State<NavPrincipal> {
       child: Image.asset('assets/images/Confings.png'),
     );
 
+    
     return Container(
       child: Padding(
           padding: EdgeInsets.all(10.0),
@@ -100,6 +102,7 @@ class _NavPrincipalState extends State<NavPrincipal> {
                   btnPublicButton,
                   btnNewsButton,
                   btnConfingButton,
+                  
                 ],
               )
             ],
